@@ -20,14 +20,15 @@ def rule_all(level):
     # Rule for comments :
     list_rules.append({'regex': '#.*$', 'token': 'comment', 'next': 'start', 'unicode': True})
 
-    # Rule for quoted string :
-    # complete
+    # Rule for complete quoted string :
+    # Example: 'Hedy' or "Student"
     list_rules.append({'regex': '\"[^\"]*\"', 'token': 'constant.character', 'next': 'start', 'unicode': True})
     list_rules.append({'regex': "\'[^\']*\'", 'token': 'constant.character', 'next': 'start', 'unicode': True})
 
-    # incomplete
-    list_rules.append({'regex': '\"[^\"]*$', 'token': 'constant.character', 'next': 'start', 'unicode': True})
-    list_rules.append({'regex': "\'[^\']*$", 'token': 'constant.character', 'next': 'start', 'unicode': True})
+    # Rule for incomplete quoation string :
+    # Example: 'Teacher or "Quiz
+    list_rules.append({'regex': '\"[^\"]*$', 'token': 'text', 'next': 'start', 'unicode': True})
+    list_rules.append({'regex': "\'[^\']*$", 'token': 'text', 'next': 'start', 'unicode': True})
 
     # Rule for blanks marks :
     list_rules.append({'regex': '_\\?_', 'token': 'invalid', 'next': 'start', 'unicode': True})
